@@ -1,3 +1,5 @@
+#!/bin/bash
+cat <<EOF | kind create cluster --config=-
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
@@ -10,11 +12,9 @@ nodes:
         node-labels: "ingress-ready=true"
   extraPortMappings:
   - containerPort: 80
-    hostPort: 8090
+    hostPort: 80
     protocol: TCP
   - containerPort: 443
-    hostPort: 44390
+    hostPort: 443
     protocol: TCP
-- role: worker
-- role: worker
-- role: worker
+EOF
